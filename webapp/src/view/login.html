@@ -1,0 +1,21 @@
+<header>
+
+  <div class="logo">
+    <h1>SABOCALE</h1>
+  </div>
+</header>
+
+
+
+<div class="login-form inner-box">
+  <h2>Let's start!</h2>
+  <p><?php h($message); ?></p>
+  <form method="post">
+    <input type="text" name="userID" placeholder="ユーザーID(英数字8文字)" value="1234" required/>
+    <input type="password" name="password" placeholder="パスワード(英数字8文字)" value="1234" required/>
+    <input type="hidden" name="sessionID" value="<?php echo $sessionID; ?>" />
+    <button type="submit" class="btn login">LOGIN</button>
+  </form>
+  <p>初めてご利用される方は</p>
+  <button class="btn create-account"><a href="/signup">アカウントを作成</a></button>
+</div>

@@ -1,0 +1,30 @@
+<header>
+
+  <div class="logo">
+    <h1><a href="./main">SABOCALE</a></h1>
+  </div>
+</header>
+
+<main class="select-thema inner-box">
+  
+  <h2>テーマ</h2>
+  <div class="message">
+    <!-- <p><?php h($_SESSION['color_id']);?></p> -->
+    <p><?php h($_SESSION['thema_message']);?></p>
+  </div>
+  
+  <form id="colorthema" action="color.php" method="POST">
+    <label><input type="radio" name="color" value="1" <?php if($_SESSION['color_id'] == 1) {h(checked);} ;?> >デフォルト <span><?php if($_SESSION['color_id'] == 1) {h('(現在設定されています)');} ;?></span></label>
+    <label><input type="radio" name="color" value="2" <?php if($_SESSION['color_id'] == 2) {h(checked);} ;?>>pink <span><?php if($_SESSION['color_id'] == 2) {h('(現在設定されています)');} ;?></span></label>
+    <label><input type="radio" name="color" value="3" <?php if($_SESSION['color_id'] == 3) {h(checked);} ;?>>blue <span><?php if($_SESSION['color_id'] == 3) {h('(現在設定されています)');} ;?></span></label>
+    <input type="hidden" value="<?php h($id) ?>">
+    <button class="btn color-change" type="submit">テーマを変更する</button>
+  </form>
+  
+  <button class="btn re-main"><a href="./main">メインへ戻る</a></button>
+
+
+
+</main>
+
+<script src="js/thema.js"></script>

@@ -1,0 +1,48 @@
+<div class="detail-form">
+  <form action="result" method="POST">
+    <ul>
+      <li><input class="parts" type="text" name="title" placeholder="予定の名前" value="<?php h($title); ?>"></li>
+      <li class="date-time"><input class="parts" type="date" name="dateDay" placeholder="日にち" value="<?php h($dateDay); ?>">
+        <input  class="parts"type="time" name="dateTime" placeholder="開始時間(OR終日)" value="<?php h($dateTime); ?>">
+         <!-- 〜 <input type="time" placeholder="終了時間"> -->
+      </li>
+      <textarea class="parts" name="detail" id="" cols="30" rows="10" placeholder="詳細"><?php h($scheduleDetail); ?></textarea>
+    </ul>
+    <?php if($scheduleId !== NULL){ ?>
+      <input type="hidden" name="scheduleId" value="<?php h($scheduleId); ?>">
+      <input type="hidden" name="action" value="update">
+      <button class="btn-detail" type="submit">内容を更新</button>
+  
+    <?php }else{ ?>
+      <input type="hidden" name="id" value="<?php h($id); ?>">
+      <input type="hidden" name="action" value="set">
+      <button class="btn-detail" type="submit">追加</button>
+  
+    <?php } ?>
+    
+  </form>
+  <?php if($scheduleId !== NULL){ ?>
+  <form action="result" method="POST">
+    <input type="hidden" name="dateDay" value="<?php h($dateDay); ?>">
+    <input type="hidden" name="scheduleId" value="<?php h($scheduleId); ?>">
+    <input type="hidden" name="action" value="delete">
+    <button class="btn-detail" type="submit">予定を削除</button>
+  </form>
+  
+  <form action="result" method="POST">
+    <input type="hidden" name="dateDay" value="<?php h($dateDay); ?>">
+    <input type="hidden" name="scheduleId" value="<?php h($scheduleId); ?>">
+    <input type="hidden" name="action" value="hold">
+    <button class="btn-detail" type="submit">予定を保留にする</button>
+  </form>
+  <?php } ?>
+  
+  <!-- <a href="/main">
+    <button class="btn" >戻る</button>
+  </a> -->
+  <!-- <a href="/main"> -->
+    <button class="btn" id="clo" >✖️</button>
+  <!-- </a> -->
+</div>
+
+<script src="js/detail.js"></script>

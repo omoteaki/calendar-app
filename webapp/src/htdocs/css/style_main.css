@@ -1,0 +1,662 @@
+/* :root {
+  --text-color: #303030;
+  --border-color: #f2f2f2;
+  --hover-color: #dcdcdc;
+  --background-color: #fff;
+  --table-background-color: #fff;
+} */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 22px 25px 30px;
+  font-family: Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+
+/* 全体 */
+a {
+  text-decoration: none;
+}
+
+a:-webkit-any-link {
+  color: inherit;
+}
+
+button {
+  /* line-height: 16px; */
+  /* padding: 12px 8px; */
+  border: 1px solid var(--text-color);
+  background-color: var(--table-background-color);
+  color: inherit;
+  border-radius: 3px;
+}
+
+
+/* ヘッダーとメニュー関連ここから */
+
+header {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+header h1 {
+  font-weight: normal;
+  font-family: 'Phosphate', sans-serif;
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.sp-menu {
+  margin-left: auto;
+}
+
+.sp-menu #mnopen {
+  font-size: 32px;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.sp-menu #mnopen.hide {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  padding: 64px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 20;
+}
+
+.overlay #mnclose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 32px;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.overlay ul {
+  list-style: none;
+}
+
+.overlay li {
+  margin-top: 24px;
+  text-align: right;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .3s, transform .3s;
+}
+
+.overlay.show li {
+  opacity: 1;
+  transform: none;
+}
+
+.overlay.show li:nth-child(1) {
+  transition-delay: .1s;
+}
+
+.overlay.show li:nth-child(2) {
+  transition-delay: .2s;
+}
+
+.overlay.show li:nth-child(3) {
+  transition-delay: .3s;
+}
+
+.pc-menu,
+.pc-fn {
+  display: none;
+}
+
+/* ヘッダーとメニュー関連ここまで */
+
+
+.container {
+  background-color: var(--background-color-sub);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px 10px 20px 10px;
+  width: 100%;
+}
+
+.info-monthly {
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+ul.information {
+  list-style: none;
+  display: flex;
+  font-weight: bold;
+  line-height: 36px;
+  /* height: 36px; */
+  /* flex-direction: row-reverse; */
+  /* margin-bottom: 30px; */
+  /* align-items: end; */
+}
+
+ul.information > li.year {
+  /* align-items: end; */
+  /* vertical-align: baseline; */
+  font-size: 18px;
+  /* height: 36px; */
+}
+
+ul.information > li.month {
+  /* vertical-align: baseline; */
+  /* align-items: end; */
+  font-size: 30px;
+  /* height: 30px; */
+  margin-left: 12px;
+}
+
+
+
+
+
+/* 日付やページ送りボタンのことここから */
+
+.show-calendar {
+  /* width: 75%; */
+  display: flex;
+  height: 100%;
+  /* flex-direction: column; */
+  /* background-color: aquamarine; */
+}
+
+
+.view-change {
+  display: flex;
+  justify-content: space-between;
+  /* vertical-align: middle; */
+  /* background-color: aquamarine; */
+}
+
+
+.date-show {
+  /* background-color: aqua; */
+  /* margin-bottom: 20px; */
+  display: flex;
+}
+
+
+ul.page {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  /* height: 32px; */
+  width: 160px;
+  justify-content: space-between;
+}
+
+.arrow {
+  /* line-height: 60px; */
+  font-size: 18px;
+}
+
+
+
+div.select-view > button,
+ul.page .btn {
+  height: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  /* background-color: transparent; */
+  background-color: var(--buttun-color-main);
+  /* color: inherit; */
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+ul.page .btn {
+  width: 40px;
+}
+
+ul.page .btn.today {
+  font-size: 12px;
+  line-height: 18px;
+  width: 60px;
+}
+
+div.select-view > button {
+  width: 70px;
+}
+/* 日付やページ送りボタンのことここまで */
+
+
+
+
+#contents {
+  flex: 1;
+  /* background-color: plum; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* border-left: 1px solid #f2f2f2; */
+  /* border-top: 1px solid #f2f2f2; */
+}
+/* 
+#contents > ul.week {
+  flex: 1;
+}
+
+#contents > ul {
+  list-style: none;
+  display: flex;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+ul.weektop > li {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid #f2f2f2;
+}
+
+
+ul.week > div {
+  flex: 1;
+  border-right: 1px solid #f2f2f2;
+}
+
+ul.week > div > li {
+  margin-left: 5px;
+  margin-top: 5px;
+} */
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  /* border: 1px solid var(--border-color); */
+  /* border-top: none; */
+  background-color: var(--table-background-color);
+}
+
+
+th {
+  padding: 2px 0;
+  font-weight: normal;
+  border-top: none;
+  background-color: var(--background-color-sub);
+}
+
+
+td {
+  border: 1px solid var(--border-color);
+}
+
+td {
+  height: calc(100% / 6);
+  vertical-align: top;
+}
+
+table ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  /* list-style-position: inside; */
+}
+
+table ul li {
+  display: none;
+  /* cursor: pointer; */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4px;
+  z-index: 10;
+}
+
+table ul li:first-child {
+  display: flex;
+}
+
+table ul li:before {
+  content: "●";
+  /* color: aqua; */
+  margin: 0 4px;
+  /* font-size: 12px; */
+  /* line-height: 12px; */
+}
+
+table ul li div {
+  display: none;
+  line-height: 24px;
+}
+
+
+
+td p {
+  padding: 2px 0 0 4px;
+}
+
+th.sunday,
+td p.sunday {
+  color: rgb(205, 3, 3);
+}
+
+th.saturday,
+td p.saturday {
+  color: navy;
+}
+
+td p.zengo {
+  opacity: 0.4;
+  font-size: 14px;
+}
+
+
+
+
+#mask {
+  background: rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 15;
+}
+#mask.hidden {
+  display: none;
+}
+
+
+
+/* #blue.new-account {
+  background-color: palegoldenrod;
+} */
+
+
+/* ログイン画面 */
+
+.inner-box {
+
+  background-color: var(--background-color-sub);
+  border-radius: 15px;
+  border: none;
+  /* width: 100%; */
+}
+
+.create-account,
+/* .login-form, */
+.inner-box {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.login-form > p,
+.create-account > p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.btn.login,
+.new-account .btn,
+.btn.color-change {
+  background-color: var(--buttun-color-main);
+}
+
+.login-form > form,
+.new-account{
+  
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 10px; */
+}
+
+.login-form > form > input,
+.btn.login,
+.btn.create-account,
+.new-account .btn,
+.new-account > input,
+.btn.color-change,
+.btn.re-main {
+  /* -webkit-appearance: none; */
+  margin: 12px 0;
+  /* height: 30px; */
+  border-radius: 6px;
+  padding: 12px 8px;
+  line-height: 16px;
+  /* padding: auto; */
+  /* border-style: solid; */
+  /* box-shadow: none; */
+  border: 3px solid var(--border-color);
+  /* border: none; */
+}
+
+.btn.color-change {
+  width: 100%;
+  font-weight: bold;
+}
+
+.btn.login {
+  font-weight: bold;
+}
+
+.btn.create-account {
+  align-items: center;
+}
+
+.new-account > input {
+  margin-top: 2px;
+  margin-bottom: 14px;
+}
+
+.login-form > form > input:focus {
+  outline: none;
+  border-color: orchid;
+  color: red;
+}
+
+.login-form > form > .btn,
+.btn.re-main {
+  /* height: 30px; */
+  line-height: 16px;
+  padding: 12px 8px;
+  border: 3px solid black;
+  margin: 10px 0;
+}
+
+.new-account {
+  margin-top: 10px;
+}
+
+/* .create-account { */
+  /* background-color: ; */
+/* } */
+
+
+
+/* .login-form */
+
+
+
+
+
+
+
+
+
+/* -------------以下PC表示-------------*/
+/* ------------------------------------*/
+
+@media (min-width: 600px) {
+
+  body {
+    padding: 24px 36px 36px 36px;
+  }
+  /* headerに関すること */
+  header {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  div.logo{
+    width: 25%;
+  }
+
+  .pc-menu {
+    width: 75%;
+    display: block;
+    margin-left: auto;
+  }
+
+  .pc-menu nav {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+  }
+  .pc-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .pc-menu a {
+    display: block;
+    width: 120px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .pc-menu a:hover {
+    background: var(--hover-color);
+  }
+
+  .sp-menu {
+    display: none;
+  }
+
+  .pc-fn {
+    display: block;
+  }
+
+  .container {
+    padding: 20px 30px;
+    /* flex-direction: row; */
+  }
+
+  .info-monthly {
+    /* flex-direction: column; */
+    justify-content: left;
+    margin-bottom: 20px;
+  }
+
+  .view-change {
+    width: 75%;
+    /* display: flex; */
+    /* justify-content: space-between; */
+  }
+  
+  /* . */
+  
+  div.info-monthly > ul.information {
+    width: 25%;
+  }
+  
+  .select-view {
+    display: flex;
+    align-items: center;
+    width: 240px;
+    justify-content: space-between;
+  }
+
+.pc-fn {
+  width: 25%;
+}
+
+#contents {
+  width: 75%;
+}
+
+  .schedule-today,
+.todo {
+  height: 40%;
+}
+
+.schedule-today h3,
+.todo h3 {
+  /* height: 40%; */
+  font-weight: normal;
+  /* font-size: 16px; */
+  margin-bottom: 10px;
+}
+
+.schedule-today li {
+  list-style-position: inside;
+}
+
+
+  /* 日付表示に関すること */
+  table ul li {
+    display: flex;
+    cursor: pointer;
+    margin-left: 12px;
+  }
+
+  table ul li:before {
+    display: none;
+  }
+
+  table ul li div {
+    display: inline;
+    font-size: 12px;
+  }
+
+  table ul li div.delete {
+    text-decoration: line-through;
+  }
+
+  td:hover {
+    background-color: var(--hover-color);
+  }
+
+  .inner-box {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+
+
+
+
+

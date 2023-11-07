@@ -1,0 +1,71 @@
+
+<!-- 試しに -->
+
+<!-- <div class="selector">
+  <button id="selectM" class="select">月</button>
+  <button id="selectW" class="select">
+    <label for="weeks">週</label>
+  </button>
+  <select type="text" id="weeks">
+    <?php for ( $X = 0; $X < 6; $X++){ ?>
+    <option 
+      <?php if (date ('n',strtotime($today)) === $month 
+      && date ('Y',strtotime($today)) === $year 
+      && $day + $weeknumber -1 >= $X * 7 && $day + $weeknumber -1 < ($X+1) *7 ){
+        h('selected');
+      } ?>
+      >
+      <?php h($X + 1 . '週目');  ?>
+    </option>
+    <?php }?>
+  </select>
+</div> -->
+
+<!-- 試し ここまで -->
+
+<table>
+  <thead>
+    <tr>
+      <th class="sunday">日</th>
+      <th>月</th>
+      <th>火</th>
+      <th>水</th>
+      <th>木</th>
+      <th>金</th>
+      <th class="saturday">土</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php for ($c = 0; $c < 6; $c++) { ?>
+    <tr id="week<?php h($c) ?>" class="week">
+    <?php foreach (array_slice(($main->makeCalendar()),$c*7,7) as $index => $date) {  ?>
+      <td id="datebox<?php h($index + $c*7); ?>" class="date day">
+        <p id="listNumber<?php h($index) ?>week<?php h($c) ?>" class="
+        <?php $main->addClass($date,$index); ?>
+        ">
+        <?php $main->showDate($date,$index + $c*7);?>
+        </p>
+        <div id="date<?php h($index + $c*7); ?>" style="display: none;" class="dateDay"><?php h($date); ?></div>
+        <ul class="schedule-ul">
+      <?php foreach($schedules1 as $schedule){
+        if($date == date("Y-m-d",strtotime($schedule['date']))){ ?>
+          <li id="schedule<?php h($schedule['id']) ; ?>">
+            <div class="schedule list <?php h($schedules->addFlag($schedule,$date)) ; ?>">
+            <?php h($schedules->show($schedule,$date)) ; ?>
+            </div>
+          </li>
+        <?php  } ?>
+      <?php } ?>
+        </ul>
+      </td>
+    <?php } ?>
+    </tr>
+  <?php } ?>
+
+  </tbody>
+</table>
+
+
+
+<script src="js/main.js"></script>
+

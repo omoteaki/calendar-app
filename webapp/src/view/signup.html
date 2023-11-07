@@ -1,0 +1,32 @@
+<header>
+  <div class="logo">
+    <h1><a href="./main">SABOCALE</a></h1>
+  </div>
+</header>
+
+
+<div class="inner-box create-account">
+  <h2>Welcome!</h2>
+  <p>ユーザーIDとパスワードの登録のみでカレンダーの利用を開始できます。</p>
+  
+  <p>
+    <?php h($message); ?>
+
+  </p>
+  <form method="post" class="new-account" id="blue" action="">
+      <!-- <li>氏名<input type="text" placeholder="名前"></li> -->
+      <p class="info-input">ユーザーID <span>(英数字8桁)</span></p>
+      <input type="text" name="userID" placeholder="英数字" required/>
+      <p class="info-input">パスワード <span>(英数字8桁)</span></p>
+      <input type="text" name="password" placeholder="英数字" required/>
+      <!-- <li>確認のためにもう一度パスワードを入力してください<input type="text" placeholder="英数字"></li> -->
+  
+    <!-- <div><input type="submit" value="確認画面に進む"></div> -->
+    <button class="btn" type="submit">確認画面に進む</button>
+
+
+
+    <!-- <?php echo $password; ?> -->
+    <!-- <?php echo $userId; ?> -->
+  </div>
+</form>

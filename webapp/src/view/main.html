@@ -1,0 +1,124 @@
+
+  <header>
+
+    <div class="logo">
+      <h1><a href="./main">SABOCALE</a></h1>
+    </div>
+
+    <div class="pc-menu">
+      <nav>
+        <ul>
+          <li><a href="/thema">テーマの変更</a></li>
+          <li><a href="/logout">ログアウト</a></li>
+          <li><a href="#">Menu</a></li>
+        </ul>
+        <ul>
+          <li><a href="">User</a></li>
+        </ul>
+      </nav>
+    </div>
+
+
+    <div class="sp-menu">
+      <span class="material-icons" id="mnopen">menu</span>
+    </div>
+    
+  </header>
+
+  <div class="overlay">
+    <span class="material-icons" id="mnclose">close</span>
+    <nav>
+      <ul>
+        <li><a href="/thema">テーマの変更</a></li>
+        <li><a href="/logout">ログアウト</a></li>
+        <li><a href="#">Menu</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <div class="container">
+    <div class="info-monthly">
+      <ul class="information">
+        <li class="year"><span id="year"><?php h($year); ?></span>年</li>
+        <li class="month"><span id="month"><?php h($month); ?></span>月</li>
+      </ul>
+      <div class="view-change">
+        <div class="select-view pc-fn">
+          <button>DAY</button>
+          <button>WEEK</button>
+          <button>MONTH</button>
+        </div>
+      
+        <div class="date-show">
+          <ul class="page">
+            <li>
+              <form method="post">
+                <input type="hidden" name="year" value="<?php echo $year; ?>" />
+                <input type="hidden" name="month" value="<?php echo $month -1; ?>" />
+                <button type="button" id="backMonth" class="btn" ><span class="material-icons arrow" id="">arrow_left</span></button>
+              </form>
+            </li>
+            <li id="thismonth" class="th-month none">
+              <form method="post">
+                <input type="hidden" name="year" value="<?php echo date ('Y',strtotime($today)); ?>" />
+                <input type="hidden" name="month" value="<?php echo date ('n',strtotime($today)); ?>" />
+                <button type="button" id="mainMonth" class="btn today" >TODAY</button>
+              </form>
+            </li>
+            <li>
+              <form method="post">
+                <input type="hidden" name="year" value="<?php echo $year; ?>" />
+                <input type="hidden" name="month" value="<?php echo $month +1; ?>" />
+                <button type="button" id="nextMonth" class="btn" ><span class="material-icons arrow" id="">arrow_right</span></button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="show-calendar">
+      <div class="pc-fn">
+
+        <div class="schedule-today">
+          <h3>today's schedule</h3>
+          <ul>
+            <li>歯医者</li>
+          </ul>
+        </div>
+        <div class="todo">
+          <h3>to do</h3>
+          <div>
+            <input type="checkbox" name="" id="">
+            <label for="">??</label>
+          </div>
+        </div>
+      </div>
+    
+    
+      <div id="contents">
+        <?php require_once('parts/contents.html'); ?>
+      </div>
+    </div>
+
+  </div>
+
+
+<!-- ここから -->
+
+  <div id="mask" class="hidden"></div>
+
+  <div id="detailform" class="hidden">
+    <?php require_once('detail.html'); ?>
+  </div>
+
+<!-- ここまで -->
+
+
+
+
+  <script src="js/header.js"></script>
+</body>
+</html>
+

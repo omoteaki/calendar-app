@@ -1,0 +1,13 @@
+<select type="text" id="weeks">
+        <?php for ( $X = 0; $X < 6; $X++){ ?>
+          <option 
+          <?php if (date ('n',strtotime($today)) === $month 
+          && date ('Y',strtotime($today)) === $year 
+          && $day + $weeknumber -1 >= $X * 7 && $day + $weeknumber -1 < ($X+1) *7 ){
+            h('selected');
+          } ?>
+          >
+          <?php h($X + 1 . '週目');  ?>
+        </option>
+        <?php }?>
+      </select>
